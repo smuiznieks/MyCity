@@ -38,5 +38,5 @@ function initMap() {
 		});
 	};
 
-// Hiding map on Profile page
+// Hiding map on Profile page because not needed
 $('#map').hide();

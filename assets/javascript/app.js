@@ -40,7 +40,7 @@ function callback(results, status) {
 	}
 };
 
-// Creates a new marker and display it on the map
+// Creates a new marker and display it on the map 
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	marker = new google.maps.Marker({
