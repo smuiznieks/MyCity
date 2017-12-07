@@ -55,20 +55,20 @@ function createMarker(place) {
 		// button.attr('id', 'save');
 		infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.vicinity + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
 		infowindow.open(map, this);
+		$('#save').on('click', function() {
+			var newName = place.name;
+			var newId = place.id;
+			console.log(newName);
+			console.log(newId);
+			var savePlace = {
+	    		name: newName,
+	    		id: newId
+	  		};
+	  		database.ref().push(savePlace);
+		});
 	});
 
-	$('#save').on('click', function() {
-		var newName = place.name;
-		var newId = place.id;
-		console.log(newName);
-		console.log(newId);
-		var savePlace = {
-	    	name: newName,
-	    	id: newId
-	  	};
-
-	  	database.ref().push(savePlace);
-	});
+	
 };
 
 
