@@ -63,6 +63,11 @@ function createMarker(place) {
 	  		database.ref().push(savePlace);
 		});
 	});
+<<<<<<< HEAD
+=======
+
+	
+>>>>>>> c3518ca36a2b6f3b7aeb91d02a96d05ccb13d155
 };
 
 // ----------------------------- //
