@@ -63,8 +63,6 @@ function createMarker(place) {
 	  	database.ref().push(savePlace);
 		});
 	});
-
-	
 };
 
 // ----------------------------- //
