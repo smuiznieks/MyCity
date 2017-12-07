@@ -64,6 +64,7 @@ function createMarker(place) {
 	    		name: newName,
 	    		id: newId
 	  		};
+
 	  		database.ref().push(savePlace);
 		});
 	});
@@ -271,7 +272,5 @@ $('#searchButton').on('click', function() {
 	// 	type: ['clothing_store']
 	// }, callback);
 });
-
-
 
 
