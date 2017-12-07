@@ -29,7 +29,7 @@ database.ref().on('child_added', function(snapshot) {
 function initMap() {
 		var service = new google.maps.places.PlacesService(map);
 		service.getDetails({
-			//We want to insert out saved places here
+			//We want to insert out saved places here... have been messing around with it but can't quite figure it out
 			placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
 		}, function(place, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
