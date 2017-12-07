@@ -10,7 +10,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-// idk if 'child_added' is the correct code to use here but it works
+// idk if 'child_added' is the correct code to use here but it works so I guess we can leave it?
 database.ref().on('child_added', function(snapshot) {
 	var savedPlace = snapshot.val();
 	
