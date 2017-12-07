@@ -60,7 +60,7 @@ function createMarker(place) {
 	    		name: newName,
 	    		id: newId
 	  		};
-	  	database.ref().push(savePlace);
+	  		database.ref().push(savePlace);
 		});
 	});
 };
