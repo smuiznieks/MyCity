@@ -49,33 +49,23 @@ function createMarker(place) {
 	});
 	google.maps.event.addListener(marker, 'click', function() {
 		console.log(place);
-		//not sure how to add an ID to the Save button, the portion that is commented out does not work
-		// button = $('<button>');
-		// button.text('Save')
-		// button.attr('id', 'save');
 		infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.vicinity + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
 		infowindow.open(map, this);
-	});
-
-	$('#save').on('click', function() {
-		var newName = place.name;
-		var newId = place.id;
-		console.log(newName);
-		console.log(newId);
-		var savePlace = {
-	    	name: newName,
-	    	id: newId
-	  	};
-
+		$('#save').on('click', function() {
+			var newName = place.name;
+			var newId = place.id;
+			console.log(newName);
+			console.log(newId);
+			var savePlace = {
+	    		name: newName,
+	    		id: newId
+	  		};
 	  	database.ref().push(savePlace);
+		});
 	});
-};
 
-
-
-function clearResults() {
 	
-}
+};
 
 // ----------------------------- //
 // CATEGORY BUTTONS
@@ -97,8 +87,6 @@ $('#restaurants').on('click', function() {
 // Bars Search Button
 $('#bars').on('click', function() {
 	initMap();
-	//this doesn't work either:
-	//marker.remove();
 	infowindow = new google.maps.InfoWindow();
 	service = new google.maps.places.PlacesService(map);
 	service.nearbySearch({
@@ -271,7 +259,6 @@ $('#searchButton').on('click', function() {
 	// 	type: ['clothing_store']
 	// }, callback);
 });
-
 
 
 
