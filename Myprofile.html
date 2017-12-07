@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyCity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Log In</a></li>
+        <li class="active"><a href="">My Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container contentWrapper">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2 class="h2">About me</h2><hr>
+              </div>
+            </div>
+            <div class="row">
+              <section>
+                <div class="col-sm-4 col-xs-12">
+                  <img alt="" id="aboutMeImage" class="img-responsive img-rounded center-block" src="assets/images/me.jpeg" />
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Favorite Places</div>
+          <div class="panel-body">
+            <ul class="row list-unstyled">
+              
+            </ul>
+          </div>
+      </aside>
+    </div>
+  </div> 
+
+  <div id="comments"></div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&libraries=places"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap"> 
+</script>
+</body>
+</html>
