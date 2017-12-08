@@ -272,5 +272,3 @@ $('#searchButton').on('click', function() {
 	// 	type: ['clothing_store']
 	// }, callback);
 });
-
-
