@@ -15,15 +15,15 @@ var database = firebase.database();
 database.ref().on('child_added', function(snapshot) {
 
 var favePlace;
-var newPlace;
-var service;
+// var newPlace;
+// var service;
 var savedPlace = snapshot.val();
 var favePlace = savedPlace.id;
 var request = {
   		placeId: favePlace
 	};
 
-var queryURL = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + request.placeId + '&key=AIzaSyC519iOJi8tbM45WPdfph3XP-nxkdtez-o'
+var queryURL = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + request.placeId + '&key=AIzaSyDMqNQ9pA7C5sKkMHm8U6BAdExqtprHAwE'
 
 
 	console.log(queryURL);
@@ -36,14 +36,13 @@ var queryURL = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=
           url: queryURL,
           method: "GET"
         }).done(function(response) {
-        	console.log(response.id);
-        	$('#favorites').text(response.id);
+        	
+          console.log(response);
+       
         });
-
-
 });
 
-$('#map').hide();
+// $('#map').hide();
 
 
 
