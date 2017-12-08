@@ -78,16 +78,17 @@ function initApp() {
       //document.getElementById('quickstart-oauthtoken').textContent = 'null';
       // [END_EXCLUDE]
     }
-      // [START_EXCLUDE]
-      document.getElementById('quickstart-sign-in').disabled = false;
-      // [END_EXCLUDE]
-    });
-    // [END authstatelistener]
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
-  }
-  window.onload = function() {
-    initApp();
-  };
+    // [START_EXCLUDE]
+    document.getElementById('quickstart-sign-in').disabled = false;
+    // [END_EXCLUDE]
+  });
+  // [END authstatelistener]
+  document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+}
+
+window.onload = function() {
+  initApp();
+};
 
 $('#quickstart-sign-in-status').hide();
 $('#quickstart-account-details').hide();
