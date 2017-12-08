@@ -16,7 +16,6 @@ var marker;
 var infowindow;
 var service;
 
-
 function initMap() {
     uluru = {lat: 41.505493, lng: -81.681290};
     map = new google.maps.Map(document.getElementById('map'), {
@@ -68,15 +67,7 @@ function createMarker(place) {
 	  		database.ref().push(savePlace);
 		});
 	});
-
-	
 };
-
-
-
-function clearResults() {
-	
-}
 
 // ----------------------------- //
 // CATEGORY BUTTONS
@@ -170,23 +161,6 @@ $('#shopping').on('click', function() {
 		type: ['clothing_store']
 	}, callback);
 });
-
-
-//This would save info to firebase but can't get the #save id to appear on the button?? Something is missing here....
-
-// $('#save').on('click', function() {
-// 	var newName = place.name;
-// 	var newId = place.id;
-// 	console.log(newName);
-// 	console.log(newId);
-// 	var newPlace = {
-// 		name: newName,
-// 		id: newId
-// 	}
-// 	database.ref().push(newPlace)
-// });
-
-
 
 function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
