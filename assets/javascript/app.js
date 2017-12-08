@@ -57,7 +57,7 @@ function createMarker(place) {
 		infowindow.open(map, this);
 		$('#save').on('click', function() {
 			var newName = place.name;
-			var newId = place.id;
+			var newId = place.place_id;
 			console.log(newName);
 			console.log(newId);
 			var savePlace = {
