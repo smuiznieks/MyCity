@@ -1,18 +1,8 @@
-var config = {
-    apiKey: "AIzaSyDMqNQ9pA7C5sKkMHm8U6BAdExqtprHAwE",
-    authDomain: "mycity-188015.firebaseapp.com",
-    databaseURL: "https://mycity-188015.firebaseio.com",
-    projectId: "mycity-188015",
-    storageBucket: "mycity-188015.appspot.com",
-    messagingSenderId: "986949142496"
-};
-
-firebase.initializeApp(config);
-var database = firebase.database();
-
 function toggleSignIn() {
       if (!firebase.auth().currentUser) {
+        // [START createprovider]
         var provider = new firebase.auth.GoogleAuthProvider();
+        // [END createprovider]
         // [START addscopes]
         //provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
         // [END addscopes]
@@ -81,10 +71,10 @@ function toggleSignIn() {
         } else {
           // User is signed out.
           // [START_EXCLUDE]
-          document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+          //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
           document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
-          document.getElementById('quickstart-account-details').textContent = 'null';
-          document.getElementById('quickstart-oauthtoken').textContent = 'null';
+          //document.getElementById('quickstart-account-details').textContent = 'null';
+          //document.getElementById('quickstart-oauthtoken').textContent = 'null';
           // [END_EXCLUDE]
         }
         // [START_EXCLUDE]
