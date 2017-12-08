@@ -1,4 +1,14 @@
-var provider = new firebase.auth.GoogleAuthProvider();
+var config = {
+    apiKey: "AIzaSyDMqNQ9pA7C5sKkMHm8U6BAdExqtprHAwE",
+    authDomain: "mycity-188015.firebaseapp.com",
+    databaseURL: "https://mycity-188015.firebaseio.com",
+    projectId: "mycity-188015",
+    storageBucket: "mycity-188015.appspot.com",
+    messagingSenderId: "986949142496"
+};
+
+firebase.initializeApp(config);
+var database = firebase.database();
 
 function toggleSignIn() {
       if (!firebase.auth().currentUser) {
@@ -15,7 +25,7 @@ function toggleSignIn() {
           // The signed-in user info.
           var user = result.user;
           // [START_EXCLUDE]
-          document.getElementById('quickstart-oauthtoken').textContent = token;
+          //document.getElementById('quickstart-oauthtoken').textContent = token;
           // [END_EXCLUDE]
         }).catch(function(error) {
           // Handle Errors here.
@@ -68,7 +78,7 @@ function toggleSignIn() {
           // [START_EXCLUDE]
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          //document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
           // [END_EXCLUDE]
         } else {
           // User is signed out.
