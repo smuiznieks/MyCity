@@ -55,6 +55,7 @@ function toggleSignIn() {
       // Listening for auth state changes.
       // [START authstatelistener]
       firebase.auth().onAuthStateChanged(function(user) {
+        console.log(user)
         if (user) {
           // User is signed in.
           var displayName = user.displayName;
