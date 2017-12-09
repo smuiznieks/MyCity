@@ -65,7 +65,7 @@ function createMarker(place) {
 	    		id: newId
 	  		};
 
-	  		database.ref().push(savePlace);
+	  		database.ref("places/").push(savePlace);
 		});
 	});
 };
