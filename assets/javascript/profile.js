@@ -59,7 +59,6 @@ database.ref().on('child_added', function(snapshot) {
 var displayName;
 var user;
 
-
 function toggleSignIn() {
   if (!firebase.auth().currentUser) {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -129,7 +128,6 @@ window.onload = function() {
 $('#quickstart-sign-in-status').hide();
 $('#quickstart-account-details').hide();
 $('#quickstart-oauthtoken').hide();
-
 
 firebase.auth().onIdTokenChanged(function(user) {
   if (user) {
