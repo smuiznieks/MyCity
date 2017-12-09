@@ -93,3 +93,10 @@ window.onload = function() {
 $('#quickstart-sign-in-status').hide();
 $('#quickstart-account-details').hide();
 $('#quickstart-oauthtoken').hide();
+
+firebase.auth().onIdTokenChanged(function(user) {
+  if (user) {
+    // User is signed in or token was refreshed.
+    console.log('User is signed in.')
+  }
+});
