@@ -1,3 +1,18 @@
+var config = {
+    apiKey: "AIzaSyDMqNQ9pA7C5sKkMHm8U6BAdExqtprHAwE",
+    authDomain: "mycity-188015.firebaseapp.com",
+    databaseURL: "https://mycity-188015.firebaseio.com",
+    projectId: "mycity-188015",
+    storageBucket: "mycity-188015.appspot.com",
+    messagingSenderId: "986949142496"
+};
+
+firebase.initializeApp(config);
+var database = firebase.database();
+var token;
+
+database.ref().push(token);
+
 function toggleSignIn() {
   if (!firebase.auth().currentUser) {
     // [START createprovider]
@@ -9,7 +24,7 @@ function toggleSignIn() {
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+      token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
       // [START_EXCLUDE]
@@ -93,3 +108,16 @@ window.onload = function() {
 $('#quickstart-sign-in-status').hide();
 $('#quickstart-account-details').hide();
 $('#quickstart-oauthtoken').hide();
+
+
+firebase.auth().onIdTokenChanged(function(user) {
+  if (user) {
+    // User is signed in or token was refreshed.
+    //INSERT ASHLEE'S CODE HERE????????????
+    console.log('User is signed in.')
+  }
+  else {
+    var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
+    $('#favorites').append(noUser);
+  }
+});
