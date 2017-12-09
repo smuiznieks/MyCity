@@ -56,6 +56,9 @@ database.ref().on('child_added', function(snapshot) {
 // $('#map').hide();
 
 // Code to sign in with Google profile via Firebase
+var displayName;
+var token;
+var user;
 
 
 function toggleSignIn() {
@@ -69,10 +72,9 @@ function toggleSignIn() {
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      database.ref().push(token);
+      token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
+      user = result.user;
       // [START_EXCLUDE]
       document.getElementById('quickstart-oauthtoken').textContent = token;
       // [END_EXCLUDE]
@@ -118,7 +120,7 @@ function initApp() {
     console.log(user);
     if (user) {
       // User is signed in.
-      var displayName = user.displayName;
+      displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
@@ -161,10 +163,13 @@ firebase.auth().onIdTokenChanged(function(user) {
     // User is signed in or token was refreshed.
     //INSERT ASHLEE'S CODE HERE????????????
     console.log('User is signed in.')
+    $('#user-name').text(', ' + user.displayName);
     $('#favorites').empty();
     $('#favorites').text('Cool, these are my saved places!');
   }
   else {
+    $('#user-name').empty();
+    $('#favorites').empty();
     var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
     $('#favorites').append(noUser);
   }
