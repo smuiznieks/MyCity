@@ -42,7 +42,7 @@ function initApp() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
-      console.log(user);
+      //console.log(user);
       displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -84,7 +84,7 @@ firebase.auth().onIdTokenChanged(function(user) {
     console.log('User is signed in.')
     console.log('Token: ' + token);
     //database.ref().push(token);
-    database.ref().push(user);
+    //database.ref().push(user);
   }
 });
 

@@ -70,9 +70,9 @@ function toggleSignIn() {
       token = result.credential.accessToken;
       // The signed-in user info.
       user = result.user;
-      document.getElementById('quickstart-oauthtoken').textContent = token;
+      //document.getElementById('quickstart-oauthtoken').textContent = token;
       //database.ref().push(token);
-      database.ref().push(user);
+      database.ref("users/"+).push(user);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
