@@ -117,15 +117,14 @@ firebase.auth().onIdTokenChanged(function(user) {
     // User is signed in or token was refreshed.
     //INSERT ASHLEE'S CODE HERE????????????
     console.log('User is signed in.');
-    $('#user-name').text(', ' + user.displayName);
-    $('#favorites').empty();
-    $('#favorites').text('Cool, these are my saved places!');
+    //$('#user-name').text(', ' + user.displayName);
+    //$('#favorites').empty();
   }
   else {
     console.log('No user signed in.');
-    $('#user-name').empty();
-    $('#favorites').empty();
-    var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
-    $('#favorites').append(noUser);
+    //$('#user-name').empty();
+    //$('#favorites').empty();
+    //var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
+    //$('#favorites').append(noUser);
   }
 });
