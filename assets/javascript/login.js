@@ -1,6 +1,5 @@
 // Code to sign in with Google profile via Firebase
 var displayName;
-var token;
 var user;
 
 
@@ -9,12 +8,12 @@ function toggleSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
-      console.log(result);
       // This gives you a Google Access Token. You can use it to access the Google API.
-      token = result.credential.accessToken;
+      var token = result.credential.accessToken;
       // The signed-in user info.
       user = result.user;
-      document.getElementById('quickstart-oauthtoken').textContent = token;
+      //document.getElementById('quickstart-oauthtoken').textContent = token;
+      database.ref("users/").push(user.displayName);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -42,7 +41,7 @@ function initApp() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
-      //console.log(user);
+      console.log(user);
       displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -74,17 +73,11 @@ $('#quickstart-sign-in-status').hide();
 $('#quickstart-account-details').hide();
 $('#quickstart-oauthtoken').hide();
 
-$('#quickstart-sign-in-status').hide();
-$('#quickstart-account-details').hide();
-$('#quickstart-oauthtoken').hide();
-
 firebase.auth().onIdTokenChanged(function(user) {
   if (user) {
     // User is signed in or token was refreshed.
     console.log('User is signed in.')
     console.log('Token: ' + token);
-    //database.ref().push(token);
-    //database.ref().push(user);
   }
 });
 
