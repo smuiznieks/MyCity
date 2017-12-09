@@ -24,9 +24,9 @@ database.ref().on('child_added', function(snapshot) {
 });
 
 function logPlaceDetails(placeId) {
-          var service = new google.maps.places.PlacesService(document.getElementById('map'));
-          service.getDetails({
-            placeId: placeId
+    var service = new google.maps.places.PlacesService(document.getElementById('map'));
+    service.getDetails({
+    placeId: placeId
           }, function (place) {
             console.log('Place details:', place);
             var div = $('<div>');
