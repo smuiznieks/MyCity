@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-database.ref().on('child_added', function(snapshot) {
+database.ref("places/").on('child_added', function(snapshot) {
 
  
     var savedPlace = snapshot.val();
