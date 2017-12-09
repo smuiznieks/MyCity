@@ -39,9 +39,9 @@ function toggleSignIn() {
 function initApp() {
 // Listening for auth state changes.
   firebase.auth().onAuthStateChanged(function(user) {
-    console.log(user);
     if (user) {
       // User is signed in.
+      console.log(user);
       displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -54,6 +54,7 @@ function initApp() {
       document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
     } else {
       // User is signed out.
+      console.log('No user signed in.');
       //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
       document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
       //document.getElementById('quickstart-account-details').textContent = 'null';
