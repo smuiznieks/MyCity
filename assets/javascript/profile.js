@@ -162,7 +162,8 @@ firebase.auth().onIdTokenChanged(function(user) {
   if (user) {
     // User is signed in or token was refreshed.
     //INSERT ASHLEE'S CODE HERE????????????
-    console.log('User is signed in.')
+    console.log('User is signed in.');
+    console.log('Token: ' + token);
     $('#user-name').text(', ' + user.displayName);
     $('#favorites').empty();
     $('#favorites').text('Cool, these are my saved places!');
