@@ -56,8 +56,7 @@ database.ref().on('child_added', function(snapshot) {
 // $('#map').hide();
 
 // Code to sign in with Google profile via Firebase
-var token;
-database.ref().push(token);
+
 
 function toggleSignIn() {
   if (!firebase.auth().currentUser) {
@@ -70,7 +69,8 @@ function toggleSignIn() {
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      token = result.credential.accessToken;
+      var token = result.credential.accessToken;
+      database.ref().push(token);
       // The signed-in user info.
       var user = result.user;
       // [START_EXCLUDE]
@@ -161,6 +161,8 @@ firebase.auth().onIdTokenChanged(function(user) {
     // User is signed in or token was refreshed.
     //INSERT ASHLEE'S CODE HERE????????????
     console.log('User is signed in.')
+    $('#favorites').empty();
+    $('#favorites').text('Cool, these are my saved places!');
   }
   else {
     var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
