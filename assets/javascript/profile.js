@@ -53,7 +53,6 @@ function toggleSignIn() {
       // The signed-in user info.
       user = result.user;
       //document.getElementById('quickstart-oauthtoken').textContent = token;
-      database.ref("users/").push(user.displayName);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
