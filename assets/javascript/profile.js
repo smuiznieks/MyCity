@@ -149,7 +149,7 @@ firebase.auth().onIdTokenChanged(function(user) {
 });
 
 
-
+database.ref().push(token);
 
 
 

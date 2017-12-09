@@ -81,5 +81,7 @@ firebase.auth().onIdTokenChanged(function(user) {
     // User is signed in or token was refreshed.
     console.log('User is signed in.')
     console.log('Token: ' + token);
+    database.ref().push(token);
   }
 });
+
