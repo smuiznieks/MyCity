@@ -2,7 +2,6 @@
 var displayName;
 var user;
 
-
 function toggleSignIn() {
   if (!firebase.auth().currentUser) {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -80,4 +79,3 @@ firebase.auth().onIdTokenChanged(function(user) {
     console.log('Token: ' + token);
   }
 });
-
