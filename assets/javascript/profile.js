@@ -11,47 +11,34 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-// idk if 'child_added' is the correct code to use here but it works so I guess we can leave it?
 database.ref().on('child_added', function(snapshot) {
 
-    var favePlace;
-    // var newPlace;
-    // var service;
+ 
     var savedPlace = snapshot.val();
     var favePlace = savedPlace.id;
-    var request = {
-        placeId: favePlace
-    };
 
-    var queryURL = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + request.placeId + '&key=AIzaSyDMqNQ9pA7C5sKkMHm8U6BAdExqtprHAwE'
+    console.log(savedPlace);
 
+    logPlaceDetails(favePlace);
 
-	console.log(queryURL);
+});
 
+function logPlaceDetails(placeId) {
+          var service = new google.maps.places.PlacesService(document.getElementById('map'));
+          service.getDetails({
+            placeId: placeId
+          }, function (place) {
+            console.log('Place details:', place);
+            var div = $('<div>');
+            div.append(place.name + '<br />');
+            div.append('Address: ' + place.adr_address + '<br />');
+            div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
+            div.append('Category: ' + place.types[0] + '<br />');
+            div.append('Website: ' + place.website + '<br />');
+            $('#favorites').prepend(div);
+          });
 
-    $.ajax({
-        url: queryURL,
-        type: "GET"
-    }).done(function(response) {
-
-        console.log(response)
-        
-        // $.ajax({
-        //     url: queryURL, 
-        //     type: "GET",   
-        //     dataType: 'json',
-        //     cache: false,
-        //     }).done(function(response) {                         
-        //         console.log(response);                   
-        //         })            
-    
-
-    }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-        });
-})
-
-// $('#map').hide();
+}
 
 // Code to sign in with Google profile via Firebase
 var user;
