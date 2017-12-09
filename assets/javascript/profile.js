@@ -51,12 +51,9 @@ database.ref().on('child_added', function(snapshot) {
         });
 })
 
-
-
 // $('#map').hide();
 
 // Code to sign in with Google profile via Firebase
-var displayName;
 var user;
 
 function toggleSignIn() {
@@ -98,7 +95,7 @@ function initApp() {
     if (user) {
       // User is signed in.
       console.log(user);
-      displayName = user.displayName;
+      var displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
@@ -110,7 +107,6 @@ function initApp() {
       document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
     } else {
       // User is signed out.
-      console.log('No user signed in.');
       //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
       document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
       //document.getElementById('quickstart-account-details').textContent = 'null';
@@ -139,19 +135,10 @@ firebase.auth().onIdTokenChanged(function(user) {
     $('#favorites').text('Cool, these are my saved places!');
   }
   else {
+    console.log('No user signed in.');
     $('#user-name').empty();
     $('#favorites').empty();
     var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
     $('#favorites').append(noUser);
   }
 });
-
-
-
-
-
-
-
-
-
-
