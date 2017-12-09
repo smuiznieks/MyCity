@@ -49,7 +49,7 @@ function toggleSignIn() {
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+      //var token = result.credential.accessToken;
       // The signed-in user info.
       user = result.user;
       //document.getElementById('quickstart-oauthtoken').textContent = token;
@@ -82,16 +82,16 @@ function initApp() {
     if (user) {
       // User is signed in.
       console.log(user);
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+      //var displayName = user.displayName;
+      //var email = user.email;
+      //var emailVerified = user.emailVerified;
+      //var photoURL = user.photoURL;
+      //var isAnonymous = user.isAnonymous;
+      //var uid = user.uid;
+      //var providerData = user.providerData;
+      //document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
       document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-      document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+      //document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
     } else {
       // User is signed out.
       //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
