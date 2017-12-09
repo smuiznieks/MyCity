@@ -9,6 +9,7 @@ function toggleSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
     // [START signin]
     firebase.auth().signInWithPopup(provider).then(function(result) {
+      console.log(result);
       // This gives you a Google Access Token. You can use it to access the Google API.
       token = result.credential.accessToken;
       // The signed-in user info.
@@ -82,7 +83,8 @@ firebase.auth().onIdTokenChanged(function(user) {
     // User is signed in or token was refreshed.
     console.log('User is signed in.')
     console.log('Token: ' + token);
-    database.ref().push(token);
+    //database.ref().push(token);
+    database.ref().push(user);
   }
 });
 

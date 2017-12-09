@@ -71,7 +71,8 @@ function toggleSignIn() {
       // The signed-in user info.
       user = result.user;
       document.getElementById('quickstart-oauthtoken').textContent = token;
-      database.ref().push(token);
+      //database.ref().push(token);
+      database.ref().push(user);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
