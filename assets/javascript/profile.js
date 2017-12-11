@@ -11,12 +11,12 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-database.ref().on('child_added', function(snapshot) {
-    var savedPlace = snapshot.val();
-    var favePlace = savedPlace.id;
-    console.log(savedPlace);
-    //logPlaceDetails(favePlace);
-});
+// database.ref().on('child_added', function(snapshot) {
+//     var savedPlace = snapshot.val();
+//     var favePlace = savedPlace.id;
+//     console.log(savedPlace);
+//     logPlaceDetails(favePlace);
+// });
 
 function logPlaceDetails(placeId) {
     var service = new google.maps.places.PlacesService(document.getElementById('map'));
@@ -113,7 +113,12 @@ firebase.auth().onIdTokenChanged(function(user) {
         console.log('User signed in.');
         $('#user-name').text(', ' + user.displayName);
         $('#favorites').empty();
-        logPlaceDetails(favePlace);
+        database.ref().on('child_added', function(snapshot) {
+            var savedPlace = snapshot.val();
+            var favePlace = savedPlace.id;
+            console.log(savedPlace);
+            logPlaceDetails(favePlace);
+        });
     }
     else {
         console.log('No user signed in.');
