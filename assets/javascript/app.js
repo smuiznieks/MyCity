@@ -63,7 +63,13 @@ function createMarker(place) {
     			id: newId,
     			user: uid
   			};
-  			database.ref().push(savePlace);
+            database.ref().on('child_added', function(snapshot) {
+                var checkSavedPlace = snapshot.val();
+                var checkFavePlace = checkSavedPlace.id;
+                if (savePlace.id !== checkFavePlace) {
+                    database.ref().push(savePlace);
+                }
+            });
 		});
 	});
 };
@@ -80,7 +86,6 @@ $('#restaurants').on('click', function() {
 		radius: 1000,
 		type: ['restaurant']
 	}, callback);
-
 });
 
 // Bars Search Button
@@ -291,8 +296,7 @@ firebase.auth().onIdTokenChanged(function(user) {
 	if (user) {
     	// User is signed in or token was refreshed.
     	console.log('User signed in.')
-  	}
-  	else {
+  	} else {
   		console.log('No user signed in.');
   	}
 });
