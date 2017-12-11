@@ -69,7 +69,7 @@ function toggleSignIn() {
             var email = error.email;
             var credential = error.credential;
             if (errorCode === 'auth/account-exists-with-different-credential') {
-                alert('You have already signed up with a different auth provider for that email.');
+                console.log('User has already signed up with a different auth provider for that email.');
             } else {
                 console.error(error);
             }
