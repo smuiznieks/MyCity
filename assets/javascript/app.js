@@ -223,7 +223,15 @@ $('#shopping').on('click', function() {
 //       }
 
 $('#searchButton').on('click', function() {
-
+    var searchLocation = $("#searchInput").val().trim();
+    initMap();
+    var request = {
+        location: uluru,
+        radius: '5000',
+        query: searchLocation
+    }
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
 });
 
 // Code to sign in with Google profile via Firebase
