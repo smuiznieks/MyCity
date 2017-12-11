@@ -23,6 +23,7 @@
 </nav> 
 
 <div id="map"></div>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 11,cityid: '5150529',appid: 'afc5e14f80351e549a070c4d57d47073',units: 'imperial',containerid: 'openweathermap-widget-11',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
 
 <div class="container">
 	<div class="row">
@@ -74,8 +75,11 @@
 <!-- Bootstrap -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- JavaScript File -->
+<div id="openweathermap-widget-11"></div>
+<script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
 <script src="assets/javascript/app.js"></script>
 <script src="assets/javascript/login.js"></script>
+<script src="assets/javascript/events.js"></script>
 <!-- Google Maps JavaScript Files -->
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&libraries=places"></script> -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap&libraries=places"></script>
