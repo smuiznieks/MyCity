@@ -46,6 +46,8 @@ $('#map').hide();
 
 //Code to sign in with Google profile via Firebase
 var user;
+var displayName;
+var photoURL;
 var uid;
 
 function toggleSignIn() {
@@ -76,16 +78,15 @@ function initApp() {
         if (user) {
             // User is signed in.
             console.log(user);
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
+            displayName = user.displayName;
+            //var email = user.email;
+            //var emailVerified = user.emailVerified;
+            photoURL = user.photoURL;
             uid = user.uid;
-            var providerData = user.providerData;
-            document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+            //var providerData = user.providerData;
+            //document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
             document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-            document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+            //document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
         } else {
             // User is signed out.
             //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
@@ -102,29 +103,39 @@ window.onload = function() {
     initApp();
 };
 
-$('#quickstart-sign-in-status').hide();
-$('#quickstart-account-details').hide();
-$('#quickstart-oauthtoken').hide();
+//$('#quickstart-sign-in-status').hide();
+//$('#quickstart-account-details').hide();
+//$('#quickstart-oauthtoken').hide();
 
 firebase.auth().onIdTokenChanged(function(user) {
     if (user) {
         // User is signed in or token was refreshed.
-        //INSERT ASHLEE'S CODE HERE????????????
         console.log('User signed in.');
+        $('#login-message').empty();
+        $('#favorites').show();
+        $('#recents').show();
+        $('#recommendations').show();
         $('#user-name').text(', ' + user.displayName);
+        $('#prof-pic').append('<img src="' + photoURL + '" + alt="Profile Picture" />')
         $('#favorites').empty();
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();
             var favePlace = savedPlace.id;
             console.log(savedPlace);
+            console.log(uid);
+            console.log(savedPlace.user);
             logPlaceDetails(favePlace);
         });
     }
     else {
         console.log('No user signed in.');
+        $('#favorites').hide();
+        $('#recents').hide();
+        $('#recommendations').hide();
         $('#user-name').empty();
+        $('#prof-pic').empty();
         $('#favorites').empty();
         var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
-        $('#favorites').append(noUser);
+        $('#login-message').append(noUser);
     }
 });
