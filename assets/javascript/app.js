@@ -54,8 +54,8 @@ function createMarker(place) {
 		// button.attr('id', 'save');
 		infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.vicinity + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
 		infowindow.open(map, this);
-		//if (user) {}
-		$('#save').on('click', function() {
+		if (user) {
+			$('#save').on('click', function() {
 			var newName = place.name;
 			var newId = place.place_id;
 			console.log(newName);
@@ -67,7 +67,9 @@ function createMarker(place) {
 	  		};
 
 	  		database.ref().push(savePlace);
-		});
+			});
+		}
+		
 	});
 };
 
@@ -263,7 +265,6 @@ function toggleSignIn() {
       // The signed-in user info.
       user = result.user;
       //document.getElementById('quickstart-oauthtoken').textContent = token;
-      database.ref("users/").push(user.displayName);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
