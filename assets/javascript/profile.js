@@ -45,12 +45,10 @@ $('#profile-page').hide();
 
 $('#place-visited').on('click', function() {
     console.log('User has visited a new location.');
-    $('#recents').prepend(this);
 });
 
 $('#delete-place').on('click', function() {
     console.log('User has deleted a saved location.');
-    $(this).remove();
 });
 
 //Code to sign in with Google profile via Firebase
@@ -137,17 +135,12 @@ function upcomingEvents() {
         console.log(response);
         for (i = 0; i < 5; i++) {
             var event = response._embedded.events[i];
-            //console.log(event.name);
-            //console.log(event.dates.start.localDate);
-            //console.log(event.dates.start.localTime);
-            //console.log(event._embedded.venues[0].name);
-            //console.log(event.url);
             var panel = $('<div class="panel panel-default">');
             var div = $('<div class="panel-body">');
             div.append('<strong>' + event.name + '</strong>' + '<br />');
             div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime + '<br />');
-            div.append('Venue: ' + event._embedded.venues[0].name + '<br />');
-            div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets.' + '</a>' + '<br />');
+            div.append(event._embedded.venues[0].name + '<br />');
+            div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets' + '</a>' + '<br />');
             panel.append(div);
             $('#recommendations').append(panel);
         }
