@@ -21,7 +21,7 @@ database.ref().on('child_added', function(snapshot) {
     console.log(savedPlace);
 
     if (userID === user) {
-      console.log(userID ' matches' user);
+      console.log(userID + ' matches' + user);
     }
 
     //logPlaceDetails(favePlace);
