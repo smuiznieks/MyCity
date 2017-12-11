@@ -115,7 +115,7 @@ firebase.auth().onIdTokenChanged(function(user) {
         $('#login-message').empty();
         $('#profile-page').show();
         $('#user-name').text(', ' + user.displayName);
-        $('#prof-pic').append('<img src="' + 'user.photoURL' + '" alt="Profile Picture" />');
+        $('#prof-pic').append('<img src="' + user.photoURL + '" alt="Profile Picture" />');
         $('#favorites').empty();
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();

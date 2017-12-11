@@ -243,8 +243,6 @@ $('#searchButton').on('click', function() {
 
 // Code to sign in with Google profile via Firebase
 var user;
-var displayName;
-var photoURL;
 var uid;
 
 function toggleSignIn() {
@@ -275,21 +273,10 @@ function initApp() {
 		if (user) {
       		// User is signed in.
       		console.log(user);
-      		displayName = user.displayName;
-      		//var email = user.email;
-      		//var emailVerified = user.emailVerified;
-      		photoURL = user.photoURL;
       		uid = user.uid;
-      		//var providerData = user.providerData;
-      		//document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
       		document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-      		//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
       	} else {
-      		// User is signed out.
-      		//document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
       		document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
-      		//document.getElementById('quickstart-account-details').textContent = 'null';
-      		//document.getElementById('quickstart-oauthtoken').textContent = 'null';
       	}
       	document.getElementById('quickstart-sign-in').disabled = false;
     });
@@ -299,10 +286,6 @@ function initApp() {
 window.onload = function() {
     initApp();
 };
-
-//$('#quickstart-sign-in-status').hide();
-//$('#quickstart-account-details').hide();
-//$('#quickstart-oauthtoken').hide();
 
 firebase.auth().onIdTokenChanged(function(user) {
 	if (user) {
