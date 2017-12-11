@@ -62,14 +62,8 @@ function createMarker(place) {
     			name: newName,
     			id: newId,
     			user: uid
-  			};
-            database.ref().on('child_added', function(snapshot) {
-                var checkSavedPlace = snapshot.val();
-                var checkFavePlace = checkSavedPlace.id;
-                if (savePlace.id !== checkFavePlace) {
-                    database.ref().push(savePlace);
-                }
-            });
+            };
+            database.ref().push(savePlace);
 		});
 	});
 };
@@ -229,21 +223,7 @@ $('#shopping').on('click', function() {
 //       }
 
 $('#searchButton').on('click', function() {
-	initMap();
-	infowindow = new google.maps.InfoWindow();
-	service = new google.maps.places.PlacesService(map);
-	// var search = $('#searchInput').val().trim().
-	service.nearbySearch({
-		location: uluru,
-		radius: 1000,
-		// types: search,
-		// type: ['shopping_mall']
-	}, callback);
-	// service.nearbySearch({
-	// 	location: uluru,
-	// 	radius: 1000,
-	// 	type: ['clothing_store']
-	// }, callback);
+
 });
 
 // Code to sign in with Google profile via Firebase
