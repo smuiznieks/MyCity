@@ -296,7 +296,7 @@ function initApp() {
 };
 
 window.onload = function() {
-  initApp();
+    initApp();
 };
 
 $('#quickstart-sign-in-status').hide();
