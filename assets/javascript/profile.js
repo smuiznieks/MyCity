@@ -39,6 +39,7 @@ function logPlaceDetails(placeId) {
 }
 
 $('#map').hide();
+$('#profile-page').hide();
 
 //$('#complete').on('click', function() {
 //    console.log('Done!');
@@ -112,11 +113,9 @@ firebase.auth().onIdTokenChanged(function(user) {
         // User is signed in or token was refreshed.
         console.log('User signed in.');
         $('#login-message').empty();
-        $('#favorites').show();
-        $('#recents').show();
-        $('#recommendations').show();
+        $('#profile-page').show();
         $('#user-name').text(', ' + user.displayName);
-        $('#prof-pic').append('<img src="https://lh5.googleusercontent.com/-90_U474yGgk/AAAAAAAAAAI/AAAAAAAAAb4/Jwb-aNQp4-8/photo.jpg" + alt="Profile Picture" />')
+        $('#prof-pic').append('<img src="' + 'user.photoURL' + '" alt="Profile Picture" />');
         $('#favorites').empty();
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();
@@ -129,13 +128,11 @@ firebase.auth().onIdTokenChanged(function(user) {
     }
     else {
         console.log('No user signed in.');
-        $('#favorites').hide();
-        $('#recents').hide();
-        $('#recommendations').hide();
+        $('#profile-page').hide();
         $('#user-name').empty();
         $('#prof-pic').empty();
         $('#favorites').empty();
-        var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
+        var noUser = ('<h5>' + 'Sign in to see your favorites.' + '</h5>');
         $('#login-message').append(noUser);
     }
 });
