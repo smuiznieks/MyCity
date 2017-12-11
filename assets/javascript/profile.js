@@ -125,8 +125,7 @@ firebase.auth().onIdTokenChanged(function(user) {
                 logPlaceDetails(favePlace);
             }
         });
-    }
-    else {
+    } else {
         console.log('No user signed in.');
         $('#profile-page').hide();
         $('#user-name').empty();
