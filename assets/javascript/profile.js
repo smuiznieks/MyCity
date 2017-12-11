@@ -15,7 +15,7 @@ database.ref().on('child_added', function(snapshot) {
     var savedPlace = snapshot.val();
     var favePlace = savedPlace.id;
     console.log(savedPlace);
-    logPlaceDetails(favePlace);
+    //logPlaceDetails(favePlace);
 });
 
 function logPlaceDetails(placeId) {
@@ -24,17 +24,27 @@ function logPlaceDetails(placeId) {
         placeId: placeId
     }, function (place) {
         console.log('Place details:', place);
-        var div = $('<div>');
-        div.append(place.name + '<br />');
+        var panel = $('<div class="panel panel-default">');
+        var div = $('<div class="panel-body">');
+        div.append('<strong>' + place.name + '</strong>' + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
         div.append('Website: ' + place.website + '<br />');
-        $('#favorites').prepend(div);
+        //var button = $('<button id="complete" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>')
+        //div.append(button);
+        panel.append(div);
+        $('#favorites').prepend(panel);
     });
 }
 
-// Code to sign in with Google profile via Firebase
+$('#map').hide();
+
+//$('#complete').on('click', function() {
+//    console.log('Done!');
+//})
+
+//Code to sign in with Google profile via Firebase
 var user;
 var uid;
 
@@ -101,14 +111,15 @@ firebase.auth().onIdTokenChanged(function(user) {
         // User is signed in or token was refreshed.
         //INSERT ASHLEE'S CODE HERE????????????
         console.log('User signed in.');
-        //$('#user-name').text(', ' + user.displayName);
-        //$('#favorites').empty();
+        $('#user-name').text(', ' + user.displayName);
+        $('#favorites').empty();
+        logPlaceDetails(favePlace);
     }
     else {
         console.log('No user signed in.');
-        //$('#user-name').empty();
-        //$('#favorites').empty();
-        //var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
-        //$('#favorites').append(noUser);
+        $('#user-name').empty();
+        $('#favorites').empty();
+        var noUser = ('<h5>' + 'Sign in to see your favorites!' + '</h5>');
+        $('#favorites').append(noUser);
     }
 });
