@@ -30,7 +30,7 @@ function logPlaceDetails(placeId) {
         div.append('Address: ' + place.adr_address + '<br />');
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
-        div.append('Website: ' + place.website + '<br />');
+        div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
         //var button = $('<button id="complete" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>')
         //div.append(button);
         panel.append(div);
@@ -116,15 +116,15 @@ firebase.auth().onIdTokenChanged(function(user) {
         $('#recents').show();
         $('#recommendations').show();
         $('#user-name').text(', ' + user.displayName);
-        $('#prof-pic').append('<img src="' + photoURL + '" + alt="Profile Picture" />')
+        $('#prof-pic').append('<img src="https://lh5.googleusercontent.com/-90_U474yGgk/AAAAAAAAAAI/AAAAAAAAAb4/Jwb-aNQp4-8/photo.jpg" + alt="Profile Picture" />')
         $('#favorites').empty();
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();
             var favePlace = savedPlace.id;
             console.log(savedPlace);
-            console.log(uid);
-            console.log(savedPlace.user);
-            logPlaceDetails(favePlace);
+            if (uid === savedPlace.user) {
+                logPlaceDetails(favePlace);
+            }
         });
     }
     else {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <title>MyCity</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,11 +9,11 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
-    	<div class="container">
-        	<span class="navbar-brand">MyCity</span>
+		<div class="container">
+			<span class="navbar-brand">MyCity</span>
         	<button type="button" class="btn btn-default navbar-btn" id="quickstart-sign-in"></button>
         	<ul class="nav navbar-nav navbar-right">
-            	<li><a href="index.html">My Map</a></li>
+        		<li><a href="index.html">My Map</a></li>
             	<li class="active"><a href="profile.html">My Profile</a></li>
             	<!-- <li><a id="quickstart-sign-in-status" href="#"></a></li>
             	<li><a id="quickstart-account-details" href="#"></a></li>
@@ -21,7 +21,9 @@
         	</ul>
     	</div>
 	</nav> 
+
 	<div id="map"></div>
+	
 	<div class="container">
 		<div class="jumbotron">
 			<div id="prof-pic"></div>
@@ -43,6 +45,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 	<!-- jQuery -->
@@ -53,5 +56,6 @@
 	<script src="assets/javascript/profile.js"></script>
 	<!-- Google Maps JavaScript Files -->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=logPlaceDetails&libraries=places"></script>
+	
 </body>
 </html>
