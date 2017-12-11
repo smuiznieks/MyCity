@@ -14,9 +14,6 @@ var database = firebase.database();
 database.ref().on('child_added', function(snapshot) {
     var savedPlace = snapshot.val();
     var favePlace = savedPlace.id;
-    var userID = savedPlace.user;
-    console.log(userID);
-    console.log(savedPlace.user);
     console.log(savedPlace);
     logPlaceDetails(favePlace);
 });
@@ -103,7 +100,7 @@ firebase.auth().onIdTokenChanged(function(user) {
     if (user) {
         // User is signed in or token was refreshed.
         //INSERT ASHLEE'S CODE HERE????????????
-        console.log('User is signed in.');
+        console.log('User signed in.');
         //$('#user-name').text(', ' + user.displayName);
         //$('#favorites').empty();
     }

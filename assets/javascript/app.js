@@ -17,6 +17,8 @@ var marker;
 var infowindow;
 var service;
 
+
+// Initiates Google map
 function initMap() {
     uluru = {lat: 41.505493, lng: -81.681290};
     map = new google.maps.Map(document.getElementById('map'), {
@@ -51,20 +53,18 @@ function createMarker(place) {
 		console.log(place);
 		infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.vicinity + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
 		infowindow.open(map, this);
-		if (user) {
-			$('#save').on('click', function() {
-				var newName = place.name;
-				var newId = place.place_id;
-				console.log(newName);
-				console.log(newId);
-				var savePlace = {
-	    			name: newName,
-	    			id: newId,
-	    			user: uid
-	  			};
-	  			database.ref().push(savePlace);
-			});
-		}
+		$('#save').on('click', function() {
+			var newName = place.name;
+			var newId = place.place_id;
+			console.log(newName);
+			console.log(newId);
+			var savePlace = {
+    			name: newName,
+    			id: newId,
+    			user: uid
+  			};
+  			database.ref().push(savePlace);
+		});
 	});
 };
 
@@ -243,6 +243,8 @@ $('#searchButton').on('click', function() {
 
 // Code to sign in with Google profile via Firebase
 var user;
+var displayName;
+var photoURL;
 var uid;
 
 function toggleSignIn() {
@@ -273,16 +275,15 @@ function initApp() {
 		if (user) {
       		// User is signed in.
       		console.log(user);
-      		var displayName = user.displayName;
-      		var email = user.email;
-      		var emailVerified = user.emailVerified;
-      		var photoURL = user.photoURL;
-      		var isAnonymous = user.isAnonymous;
+      		displayName = user.displayName;
+      		//var email = user.email;
+      		//var emailVerified = user.emailVerified;
+      		photoURL = user.photoURL;
       		uid = user.uid;
-      		var providerData = user.providerData;
-      		document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+      		//var providerData = user.providerData;
+      		//document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
       		document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-      		document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+      		//document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
       	} else {
       		// User is signed out.
       		//document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
@@ -299,14 +300,14 @@ window.onload = function() {
     initApp();
 };
 
-$('#quickstart-sign-in-status').hide();
-$('#quickstart-account-details').hide();
-$('#quickstart-oauthtoken').hide();
+//$('#quickstart-sign-in-status').hide();
+//$('#quickstart-account-details').hide();
+//$('#quickstart-oauthtoken').hide();
 
 firebase.auth().onIdTokenChanged(function(user) {
 	if (user) {
     	// User is signed in or token was refreshed.
-    	console.log('User is signed in.')
+    	console.log('User signed in.')
   	}
   	else {
   		console.log('No user signed in.');
