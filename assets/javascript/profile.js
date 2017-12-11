@@ -145,11 +145,11 @@ function upcomingEvents() {
             var panel = $('<div class="panel panel-default">');
             var div = $('<div class="panel-body">');
             div.append('<strong>' + event.name + '</strong>' + '<br />');
-            div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime '<br />');
+            div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime + '<br />');
             div.append('Venue: ' + event._embedded.venues[0].name + '<br />');
             div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets.' + '</a>' + '<br />');
             panel.append(div);
-            $('#recommendations').prepend(panel);
+            $('#recommendations').append(panel);
         }
     }).fail(function(err) {
         throw err;
