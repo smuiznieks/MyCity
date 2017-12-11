@@ -103,6 +103,7 @@ firebase.auth().onIdTokenChanged(function(user) {
     if (user) {
         // User is signed in or token was refreshed.
         console.log('User signed in.');
+        upcomingEvents();
         $('#login-message').empty();
         $('#profile-page').show();
         $('#user-name').text(', ' + user.displayName);
@@ -126,3 +127,32 @@ firebase.auth().onIdTokenChanged(function(user) {
         $('#login-message').append(noUser);
     }
 });
+
+function upcomingEvents() {
+    var queryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=cleveland&apikey=xTXoZckO39bpw42IEjyvpBl3eJGMrOtG';
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).done(function(response) {
+        console.log(response);
+        for (i = 0; i < 5; i++) {
+            var event = response._embedded.events[i];
+            //console.log(event.name);
+            //console.log(event.dates.start.localDate);
+            //console.log(event.dates.start.localTime);
+            //console.log(event._embedded.venues[0].name);
+            //console.log(event.url);
+            var panel = $('<div class="panel panel-default">');
+            var div = $('<div class="panel-body">');
+            div.append('<strong>' + event.name + '</strong>' + '<br />');
+            div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime '<br />');
+            div.append('Venue: ' + event._embedded.venues[0].name + '<br />');
+            div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets.' + '</a>' + '<br />');
+            panel.append(div);
+            $('#recommendations').prepend(panel);
+        }
+    }).fail(function(err) {
+        throw err;
+        console.log('ERROR!');
+    });
+};
