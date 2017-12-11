@@ -16,10 +16,15 @@ database.ref().on('child_added', function(snapshot) {
  
     var savedPlace = snapshot.val();
     var favePlace = savedPlace.id;
+    var userID = savedPlace.uid;
 
     console.log(savedPlace);
 
-    logPlaceDetails(favePlace);
+    if (userID === user) {
+      console.log(userID ' matches' user);
+    }
+
+    //logPlaceDetails(favePlace);
 
 });
 
