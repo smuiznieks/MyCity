@@ -31,8 +31,10 @@ function logPlaceDetails(placeId) {
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
         div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
-        //var button = $('<button id="complete" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>')
-        //div.append(button);
+        var button = $('<button id="place-visited" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
+        div.append(button);
+        var deleteButton = $('<button id="delete-place" type="button" class="btn btn-default">' + 'Delete' + '</button>');
+        div.append(deleteButton);
         panel.append(div);
         $('#favorites').prepend(panel);
     });
@@ -41,9 +43,15 @@ function logPlaceDetails(placeId) {
 $('#map').hide();
 $('#profile-page').hide();
 
-//$('#complete').on('click', function() {
-//    console.log('Done!');
-//})
+$('#place-visited').on('click', function() {
+    console.log('User has visited a new location.');
+    $('#recents').prepend(this);
+});
+
+$('#delete-place').on('click', function() {
+    console.log('User has deleted a saved location.');
+    $(this).remove();
+});
 
 //Code to sign in with Google profile via Firebase
 var user;
@@ -103,8 +111,8 @@ firebase.auth().onIdTokenChanged(function(user) {
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();
             var favePlace = savedPlace.id;
-            console.log(savedPlace);
             if (uid === savedPlace.user) {
+                console.log(savedPlace);
                 logPlaceDetails(favePlace);
             }
         });
