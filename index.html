@@ -1,77 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-  <title>MyCity</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>MyCity</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-
 <body>
-  <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="">Log In</a></li>
-        <li class="active"><a href="">My Profile</a></li>
-      </ul>
-    </div>
-  </nav>  
-  <div>
-    <h1 strong class="text-center">MyCity</h1>
-    <br>
-    <p class="text-center">A curated list of your favorite spots in your city and beyond.</p>
-    <br>
-    <div class="row top-header">
-    <div class="container">
-      <div class="col-md-3">
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <span class="navbar-brand" id="user-name">MyCity</span>
+            <button type="button" class="btn btn-default navbar-btn" id="quickstart-sign-in"></button>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="index.html">My Map</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+            </ul>
+        </div>
+    </nav> 
+    <div id="weatherAPI">
+      <div class="city"></div>
+      <div class="wind"></div>
+      <div class="humidity"></div>
+      <div class="temp"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    
+    var APIKey = "0125b2de9a0d42856e9c4048d13e8577";
+
+    
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+      "q=Cleveland,US&units=imperial&appid=" + APIKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+  
+      .done(function(response) {
+
+       
+        console.log(queryURL);
+
         
-      </div>
-      <div class="col-md-6">
-            <div id="search-center">
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
+        console.log(response);
+
+        
+        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".humidity").text("Humidity: " + response.main.humidity);
+        $(".temp").text("Temperature (F) " + response.main.temp);
+
+        
+        console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidity: " + response.main.humidity);
+        console.log("Temperature (F): " + response.main.temp);
+      });
+  </script>
+
+    <div id="map"></div>
+
+    <div class="container">
+        <div class="row">
+            <h1 strong class="text-center">MyCity</h1>
+            <p class="text-center">A curated list of your favorite spots in your city and beyond!</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div id="search-center">
+                    <div class="input-group">
+                        <input id="searchInput" type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                            <button id="searchButton" class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
-      </div>
+        </div>
+        <br />
+        <div id="categories" class="row">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" id="restaurants">Restaurants</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" id="bars">Bars</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" id="entertainment">Entertainment</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" id="museums">Museums</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" id="shopping">Shopping</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <br>
-  <div id="categories">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Cat 1</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Cat 2</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Cat 3</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Cat 4</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Cat 5</button>
-  </div>
-</div>
-<div id="map">
-  
-</div>
-  </div>
 
-  </div>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- JavaScript File -->
+    <script src="assets/javascript/app.js"></script>
+    <!-- Google Maps JavaScript Files -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap&libraries=places"></script>
 
-
+<<<<<<< HEAD
 </ul>
 </div>
 </ul>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap">
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&libraries=places"></script>
+=======
+>>>>>>> eaea1e9f0fad1ee884b4075d3fa71a1bcc598eb4
 </body>
 </html>
