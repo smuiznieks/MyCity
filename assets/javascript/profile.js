@@ -11,13 +11,6 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-// database.ref().on('child_added', function(snapshot) {
-//     var savedPlace = snapshot.val();
-//     var favePlace = savedPlace.id;
-//     console.log(savedPlace);
-//     logPlaceDetails(favePlace);
-// });
-
 function logPlaceDetails(placeId) {
     var service = new google.maps.places.PlacesService(document.getElementById('map'));
     service.getDetails({
@@ -38,18 +31,28 @@ function logPlaceDetails(placeId) {
         panel.append(div);
         $('#favorites').prepend(panel);
     });
-}
+};
+
+function placeVisited() {
+    var placeValue = ($(this).attr('data'));
+    $('#place' + placeValue).detach('#favorites');
+    $('#recents').prepend($('#place' + placeValue));
+    //database.ref().set({
+    //    recent: true
+    //});
+};
+
+function deletePlace() {
+    var placeValue = ($(this).attr('data'));
+    $('#place' + placeValue).remove();
+    //database.ref().remove();
+};
+
+$(document).on('click', '#place-visited', placeVisited);
+$(document).on('click', '#delete-place', deletePlace);
 
 $('#map').hide();
 $('#profile-page').hide();
-
-$('#place-visited').on('click', function() {
-    console.log('User has visited a new location.');
-});
-
-$('#delete-place').on('click', function() {
-    console.log('User has deleted a saved location.');
-});
 
 //Code to sign in with Google profile via Firebase
 var user;
@@ -149,3 +152,4 @@ function upcomingEvents() {
         console.log('ERROR!');
     });
 };
+
