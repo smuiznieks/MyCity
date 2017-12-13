@@ -25,10 +25,12 @@ function logPlaceDetails(placeId) {
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
         div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
-        var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
-        div.append(button);
-        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default">' + 'Delete' + '</button>');
-        div.append(deleteButton);
+        var buttonGroup = $('<div class="btn-group" role="group" aria-label="...">')
+        var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
+        buttonGroup.append(button);
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + 'Delete' + '</button>');
+        buttonGroup.append(deleteButton);
+        div.append(buttonGroup);
         panel.append(div);
         $('#favorites').prepend(panel);
         count++;
@@ -48,9 +50,9 @@ function logRecentDetails(placeId) {
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
         div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
-        //var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
+        //var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         //div.append(button);
-        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default">' + 'Delete' + '</button>');
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + 'Delete' + '</button>');
         div.append(deleteButton);
         panel.append(div);
         $('#recents').prepend(panel);
@@ -138,6 +140,7 @@ firebase.auth().onIdTokenChanged(function(user) {
         database.ref().on('child_added', function(snapshot) {
             var savedPlace = snapshot.val();
             var favePlace = savedPlace.id;
+            var recent = savedPlace.recent;
             if (uid === savedPlace.user) {
                 console.log(savedPlace);
                 if (recent === false) {
