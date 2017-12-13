@@ -22,9 +22,9 @@ function logPlaceDetails(placeId) {
         var div = $('<div class="panel-body">');
         div.append('<strong>' + place.name + '</strong>' + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
-        div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
+        div.append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>' + ': ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
-        div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
+        div.append('<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>' + ': ' + '<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
         var buttonGroup = $('<div class="btn-group" role="group" aria-label="...">')
         var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         buttonGroup.append(button);
@@ -59,7 +59,7 @@ function logRecentDetails(placeId) {
         }
         var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
-        div.append('<strong>' + place.name + '</strong>' + '<br />');
+        div.append('<strong>' + place.name + '</strong>' + icon + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
