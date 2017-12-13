@@ -61,7 +61,7 @@ function createMarker(place) {
 			var savePlace = {
     			name: newName,
     			id: newId,
-    			//user: uid,
+    			user: uid,
     			recent: false
             };
             database.ref().push(savePlace);
