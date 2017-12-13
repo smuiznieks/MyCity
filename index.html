@@ -3,10 +3,15 @@
 <head>
     <meta charset="utf-8">
     <title>MyCity</title>
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stylesheet -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat:900" rel="stylesheet">
 </head>
+
 <body>
 
     <nav class="navbar navbar-default navbar-static-top">
@@ -15,7 +20,7 @@
             <button type="button" class="btn btn-default navbar-btn" id="quickstart-sign-in"></button>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="index.html">My Map</a></li>
-                <li><a href="profile.html">My Profile</a></li>
+                <li class="active"><a href="profile.html">My Profile</a></li>
             </ul>
         </div>
     </nav> 
@@ -27,12 +32,14 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/javascript/Weather.js"></script>
+    
+
     <div id="map"></div>
 
-    <div class="container">
+    <div class="container" id="main-content">
         <div class="row">
             <h1 strong class="text-center">MyCity</h1>
-            <p class="text-center">A curated list of your favorite spots in your city and beyond!</p>
+            <h3 class="text-center">A curated list of your favorite spots in your city and beyond!</h3>
         </div>
         <div class="row">
             <div class="col-md-3"></div>
@@ -52,24 +59,33 @@
         <br />
         <div id="categories" class="row">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" id="restaurants">Restaurants</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" id="bars">Bars</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" id="entertainment">Entertainment</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" id="museums">Museums</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" id="shopping">Shopping</button>
-                </div>
-            </div>
-        </div>
+                <div class="row">
+                    <!-- <div class="col-sm-1 col-xs-12"></div> -->
+                    <div class="group-btn" role="group">
+                        <button type="button" class="btn btn-default" id="restaurants">Restaurants</button>
+                    </div>
+                    <div class="group-btn" role="group">
+                        <button type="button" class="btn btn-default" id="bars">Bars</button>
+                    </div>
+                    <div class="group-btn" role="group">
+                        <button type="button" class="btn btn-default" id="entertainment">Entertainment</button>
+                    </div>
+                    <div class="group-btn" role="group">
+                        <button type="button" class="btn btn-default" id="museums">Museums</button>
+                    </div>
+                    <div class="group-btn" role="group">
+                        <button type="button" class="btn btn-default" id="shopping">Shopping</button>
+                    </div>
+                    <!-- <div class="col-sm-1 col-xs-12"></div> -->
+<!--                     col-sm-2 col-xs-6
+ -->
+                </div> <!-- close .row -->
+            </div> <!-- close .btn-group -->
+        </div> <!-- close #categories .row -->
     </div>
+
+<!-- Sticky Footer -->
+    <footer class="footer"> ©MyCity 2017</footer>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>

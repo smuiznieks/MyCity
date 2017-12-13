@@ -47,10 +47,10 @@ function createMarker(place) {
 	google.maps.event.addListener(marker, 'click', function() {
 		console.log(place);
         if (place.vicinity) {
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.vicinity + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
+            infowindow.setContent('<div class="infoWindow"><h4>' + place.name + '</h4><p>' + place.vicinity + '</p><p>' + 'Rating: ' + place.rating + '</p>' + '<button id="save">' + 'Save' + '</button>' + '</div>');
         }
         if (place.formatted_address) {
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br />' + place.formatted_address + '<br />' + 'Rating: ' + place.rating + '<br />' + '<button id="save">' + 'Save' + '</button>' + '</div>');
+            infowindow.setContent('<div class="infoWindow"><h4>' + place.name + '</h4><p>' + place.formatted_address + '</p><p>' + 'Rating: ' + place.rating + '</p>' + '<button id="save">' + 'Save' + '</button>' + '</div>');
         }
 		infowindow.open(map, this);
 		$('#save').on('click', function() {
