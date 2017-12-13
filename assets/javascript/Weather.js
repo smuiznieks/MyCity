@@ -19,7 +19,7 @@ var APIKey = "0125b2de9a0d42856e9c4048d13e8577";
         console.log(response);
 
         
-        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".city").html("<h3>Current Weather in " + response.name + "</h3>");
         $(".wind").text("Wind Speed: " + response.wind.speed);
         $(".humidity").text("Humidity: " + response.main.humidity);
         $(".temp").text("Temperature (F) " + response.main.temp);
