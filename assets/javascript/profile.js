@@ -34,7 +34,7 @@ function logPlaceDetails(placeId) {
         }
         var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
-        div.append('<h4>' + place.name + '</h4>' + ' ' + icon + '<br />');
+        div.append('<strong>' + place.name + '</strong>' + ' ' + icon + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
         div.append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>' + ': ' + place.formatted_phone_number + '<br />');
         //div.append('Category: ' + place.types[0] + '<br />');

@@ -25,8 +25,9 @@ h1 {
 
 h2 {
 	color: #7A309C;
-	font-size: 2.5em;
+	font-size: 3em;
 	margin: 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h3 {
@@ -206,11 +207,25 @@ nav .btn-default:hover {
 
 
 /*     Profile Page     */
+strong {
+	font-size: 1.2em;
+	color: #7A309C;
+}
+
 .jumbotron {
 	width: 100%;
 	background-color: #7A309C;
 	background: linear-gradient(0deg, #62267D, #7A309C);
 	color: #fff;
+}
+
+.jumbotron img {
+	max-width: 200px;
+}
+
+.jumbotron h2 {
+	color: #fff;
+
 }
 
 .header {
@@ -220,10 +235,19 @@ nav .btn-default:hover {
 
 .panel {
 	margin-bottom: 20px;
-	background-color: rgba(91, 192, 222, 1);
+	background-color: rgba(91, 192, 222, .2);
     border: 1px solid transparent;
     border-radius: 10px;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.panel a {
+	color: #62267D;
+	text-decoration: none;
+}
+
+.panel a:hover {
+	color: #7A309C;
 }
 
 .panel-default {
@@ -231,7 +255,7 @@ nav .btn-default:hover {
 }
 
 .panel-body {
-	color: #fff;
+	color: #555;
 }
 
 .btn-sm {
@@ -240,6 +264,7 @@ nav .btn-default:hover {
 	font-size: 1em;
 	text-transform: uppercase;
 	color: #fff;
+	margin-top: 15px;
 }
 
 /*     Sticky Footer     */
