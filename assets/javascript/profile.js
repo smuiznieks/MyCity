@@ -18,7 +18,7 @@ function logPlaceDetails(placeId) {
         placeId: placeId
     }, function (place) {
         console.log('Place details:', place);
-        var panel = $('<div class="panel panel-default" id="' + count + '">');
+        var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
         div.append('<strong>' + place.name + '</strong>' + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
@@ -28,7 +28,7 @@ function logPlaceDetails(placeId) {
         var buttonGroup = $('<div class="btn-group" role="group" aria-label="...">')
         var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         buttonGroup.append(button);
-        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + 'Delete' + '</button>');
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + ' Delete' + '</button>');
         buttonGroup.append(deleteButton);
         div.append(buttonGroup);
         panel.append(div);
@@ -43,7 +43,21 @@ function logRecentDetails(placeId) {
         placeId: placeId
     }, function (place) {
         console.log('Place details:', place);
-        var panel = $('<div class="panel panel-default" id="' + count + '">');
+        var icon;
+        if (place.types[0] === 'restaurant' || 'meal_takeaway' || 'bakery' || 'food') {
+            icon = ('<span class="glyphicon glyphicon-cutlery" aria-hidden="true">' + '</span>');
+        } else if (place.types[0] === 'bar') {
+            icon = ('<span class="glyphicon glyphicon-glass" aria-hidden="true">' + '</span>');
+        } else if (place.types[0] === 'casino' || 'bowling_alley' || 'stadium' || 'amusement_park' || 'aquarium') {
+            icon = ('<span class="glyphicon glyphicon-sunglasses" aria-hidden="true">' + '</span>');
+        } else if (place.types[0] === 'museum') {
+            icon = ('<span class="glyphicon glyphicon-knight" aria-hidden="true">' + '</span>');
+        } else if (place.types[0] === 'shopping_mall' || 'clothing_store') {
+            icon = ('<span class="glyphicon glyphicon-credit-card" aria-hidden="true">' + '</span>');
+        } else {
+            icon = ('<span class="glyphicon glyphicon-heart" aria-hidden="true">' + '</span>');
+        }
+        var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
         div.append('<strong>' + place.name + '</strong>' + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
@@ -52,7 +66,7 @@ function logRecentDetails(placeId) {
         div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
         //var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         //div.append(button);
-        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + 'Delete' + '</button>');
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + ' Delete' + '</button>');
         div.append(deleteButton);
         panel.append(div);
         $('#recents').prepend(panel);
