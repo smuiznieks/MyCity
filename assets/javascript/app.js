@@ -61,7 +61,8 @@ function createMarker(place) {
 			var savePlace = {
     			name: newName,
     			id: newId,
-    			user: uid
+    			//user: uid,
+    			recent: false
             };
             database.ref().push(savePlace);
 		});
@@ -157,6 +158,7 @@ $('#shopping').on('click', function() {
 
 $('#searchButton').on('click', function() {
     var searchLocation = $("#searchInput").val().trim();
+    infowindow = new google.maps.InfoWindow();
     initMap();
     var request = {
         location: uluru,
