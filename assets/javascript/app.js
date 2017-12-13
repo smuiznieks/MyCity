@@ -36,8 +36,10 @@ function callback(results, status) {
 		}
 	}
 };
-
 // Creates a new marker and display it on the map
+
+var count = 1;
+
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	marker = new google.maps.Marker({
@@ -62,9 +64,11 @@ function createMarker(place) {
     			name: newName,
     			id: newId,
     			user: uid,
-    			recent: false
+    			recent: false,
+    			placeCount: count
             };
             database.ref().push(savePlace);
+            count++;
 		});
 	});
 };

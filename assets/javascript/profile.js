@@ -10,6 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var count = 0;
 
 function logPlaceDetails(placeId) {
     var service = new google.maps.places.PlacesService(document.getElementById('map'));
@@ -17,19 +18,43 @@ function logPlaceDetails(placeId) {
         placeId: placeId
     }, function (place) {
         console.log('Place details:', place);
-        var panel = $('<div class="panel panel-default">');
+        var panel = $('<div class="panel panel-default" id="' + count + '">');
         var div = $('<div class="panel-body">');
         div.append('<strong>' + place.name + '</strong>' + '<br />');
         div.append('Address: ' + place.adr_address + '<br />');
         div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
         div.append('Category: ' + place.types[0] + '<br />');
         div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
-        var button = $('<button id="place-visited" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
+        var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         div.append(button);
-        var deleteButton = $('<button id="delete-place" type="button" class="btn btn-default">' + 'Delete' + '</button>');
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default">' + 'Delete' + '</button>');
         div.append(deleteButton);
         panel.append(div);
         $('#favorites').prepend(panel);
+        count++;
+    });
+};
+
+function logRecentDetails(placeId) {
+    var service = new google.maps.places.PlacesService(document.getElementById('map'));
+    service.getDetails({
+        placeId: placeId
+    }, function (place) {
+        console.log('Place details:', place);
+        var panel = $('<div class="panel panel-default" id="' + count + '">');
+        var div = $('<div class="panel-body">');
+        div.append('<strong>' + place.name + '</strong>' + '<br />');
+        div.append('Address: ' + place.adr_address + '<br />');
+        div.append('Phone Number: ' + place.formatted_phone_number + '<br />');
+        div.append('Category: ' + place.types[0] + '<br />');
+        div.append('<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
+        //var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
+        //div.append(button);
+        var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default">' + 'Delete' + '</button>');
+        div.append(deleteButton);
+        panel.append(div);
+        $('#recents').prepend(panel);
+        count++;
     });
 };
 
@@ -38,7 +63,7 @@ function placeVisited() {
     $('#place' + placeValue).detach('#favorites');
     $('#recents').prepend($('#place' + placeValue));
     //database.ref().set({
-    //    recent: true
+      //  recent: true
     //});
 };
 
@@ -115,7 +140,12 @@ firebase.auth().onIdTokenChanged(function(user) {
             var favePlace = savedPlace.id;
             if (uid === savedPlace.user) {
                 console.log(savedPlace);
-                logPlaceDetails(favePlace);
+                if (recent === false) {
+                    logPlaceDetails(favePlace);
+                } 
+                if (recent === true) {
+                    logRecentDetails(favePlace);
+                }
             }
         });
     } else {
