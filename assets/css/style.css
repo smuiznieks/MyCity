@@ -197,12 +197,12 @@ nav .btn-default:hover {
 
 /*     Footer     */
 .footer {
-	background-color: #666666;
+	background-color: #3488A1;
 	text-align: center;
-	color: #cccccc;
+	color: #fff;
 	font-size: .8em;
-	padding-top: 50px;
-	border-top: 10px solid #4aaaa5;
+	padding-top: 10px;
+	border-top: 10px solid #5bc0de;
 }
 
 
@@ -270,12 +270,18 @@ strong {
 /*     Sticky Footer     */
 .push,
 .footer {
-	height: 125px;
+	height: 50px;
 }
 
 .wrapper {
-	min-height: 100%;
-	margin-bottom: -125px;
+	min-height: 25%;
+	margin-bottom: -50px;
+	margin: 0 auto;
+}
+
+.wrapper-profile {
+	min-height: 90%;
+	margin-bottom: -50px;
 	margin: 0 auto;
 }
 
@@ -309,6 +315,10 @@ strong {
 		top: 75px;
 		left: 50px;
 	}
+
+	.wrapper {
+		min-height: 29%;
+	}
 }
 
 @media (max-width: 512px) {
@@ -332,5 +342,9 @@ strong {
 		left: 0;
 		width: 100%;
 		border-radius: 0;
+	}
+
+	.wrapper {
+		min-height: 36%;
 	}
 }
