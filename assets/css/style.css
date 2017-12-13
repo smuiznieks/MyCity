@@ -23,6 +23,12 @@ h1 {
 	padding: 10px;
 }
 
+h2 {
+	color: #7A309C;
+	font-size: 2.5em;
+	margin: 0;
+}
+
 h3 {
 	font-size: 1.5em;
 }
@@ -210,6 +216,30 @@ nav .btn-default:hover {
 .header {
 	width: 80%;
 	margin: 0 auto;
+}
+
+.panel {
+	margin-bottom: 20px;
+	background-color: rgba(91, 192, 222, 1);
+    border: 1px solid transparent;
+    border-radius: 10px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.panel-default {
+	margin-top: 15px;
+}
+
+.panel-body {
+	color: #fff;
+}
+
+.btn-sm {
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 1em;
+	text-transform: uppercase;
+	color: #fff;
 }
 
 /*     Sticky Footer     */
