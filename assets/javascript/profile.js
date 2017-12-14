@@ -219,8 +219,12 @@ function upcomingEvents() {
             var event = response._embedded.events[i];
             var panel = $('<div class="panel panel-default">');
             var div = $('<div class="panel-body">');
+            var militaryTime = event.dates.start.localTime;
+            var momentTime = moment(militaryTime, "HH:mm");
+            var nonMilitaryTime = momentTime.format("h:mm a");
+            console.log(nonMilitaryTime);
             div.append('<strong>' + event.name + '</strong>' + '<br />');
-            div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime + '<br />');
+            div.append('On ' + event.dates.start.localDate + ' at ' + nonMilitaryTime + '<br />');
             div.append(event._embedded.venues[0].name + '<br />');
             div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets' + '</a>' + '<br />');
             panel.append(div);
