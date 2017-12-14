@@ -220,7 +220,7 @@ function upcomingEvents() {
             var panel = $('<div class="panel panel-default">');
             var div = $('<div class="panel-body">');
             div.append('<strong>' + event.name + '</strong>' + '<br />');
-            div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime + '<br />');
+            div.append('On ' + moment(event.dates.start.localDate).format('LTS'); + ' at ' + moment(event.dates.start.localTime).format('LTS');  + '<br />');
             div.append(event._embedded.venues[0].name + '<br />');
             div.append('<a href="' + event.url + '" target="_blank">' + 'Buy tickets' + '</a>' + '<br />');
             panel.append(div);
