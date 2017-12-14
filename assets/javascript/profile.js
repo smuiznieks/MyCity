@@ -216,9 +216,11 @@ function upcomingEvents() {
     }).done(function(response) {
         console.log(response);
         for (i = 0; i < 5; i++) {
+
             var event = response._embedded.events[i];
             var panel = $('<div class="panel panel-default">');
             var div = $('<div class="panel-body">');
+            var 
             div.append('<strong>' + event.name + '</strong>' + '<br />');
             div.append('On ' + event.dates.start.localDate + ' at ' + event.dates.start.localTime + '<br />');
             div.append(event._embedded.venues[0].name + '<br />');
