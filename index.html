@@ -25,99 +25,77 @@
         </div>
     </nav> 
 
-    
-
     <div id="map"></div>
 
-        <div id="weatherAPI">
-      <div class="city"></div>
-      <div class="wind"></div>
-      <div class="humidity"></div>
-      <div class="temp"></div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="assets/javascript/Weather.js"></script>
+    <div id="weatherAPI">
+        <div class="city"></div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
+        <div class="temp"></div>
+    </div>
     
-<div class="wrapper">
-    <div class="container" id="main-content">
-        <div class="row">
-            <h1 strong class="text-center">MyCity</h1>
-            <h3 class="text-center">A curated list of your favorite spots in your city and beyond!</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div id="search-center">
-                    <div class="input-group">
-                        <input id="searchInput" type="text" class="form-control input-lg" placeholder="Search" />
-                        <span class="input-group-btn">
-                            <button id="searchButton" class="btn btn-info btn-lg" type="button">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
+    <div class="wrapper">
+        <div class="container" id="main-content">
+            <div class="row">
+                <h1 strong class="text-center">MyCity</h1>
+                <h3 class="text-center">A curated list of your favorite spots in your city and beyond!</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div id="search-center">
+                        <div class="input-group">
+                            <input id="searchInput" type="text" class="form-control input-lg" maxlength="30" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button id="searchButton" class="btn btn-info btn-lg" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br />
+            <div id="categories" class="row">
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="row">
+                        <!-- <div class="col-sm-1 col-xs-12"></div> -->
+                        <div class="group-btn" role="group">
+                            <button type="button" class="btn btn-default" id="restaurants">Restaurants</button>
+                        </div>
+                        <div class="group-btn" role="group">
+                            <button type="button" class="btn btn-default" id="bars">Bars</button>
+                        </div>
+                        <div class="group-btn" role="group">
+                            <button type="button" class="btn btn-default" id="entertainment">Entertainment</button>
+                        </div>
+                        <div class="group-btn" role="group">
+                            <button type="button" class="btn btn-default" id="museums">Museums</button>
+                        </div>
+                        <div class="group-btn" role="group">
+                            <button type="button" class="btn btn-default" id="shopping">Shopping</button>
+                        </div>
+                    </div> <!-- close .row -->
+                </div> <!-- close .btn-group -->
+            </div> <!-- close #categories .row -->
         </div>
-        <br />
-        <div id="categories" class="row">
-            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <div class="row">
-                    <!-- <div class="col-sm-1 col-xs-12"></div> -->
-                    <div class="group-btn" role="group">
-                        <button type="button" class="btn btn-default" id="restaurants">Restaurants</button>
-                    </div>
-                    <div class="group-btn" role="group">
-                        <button type="button" class="btn btn-default" id="bars">Bars</button>
-                    </div>
-                    <div class="group-btn" role="group">
-                        <button type="button" class="btn btn-default" id="entertainment">Entertainment</button>
-                    </div>
-                    <div class="group-btn" role="group">
-                        <button type="button" class="btn btn-default" id="museums">Museums</button>
-                    </div>
-                    <div class="group-btn" role="group">
-                        <button type="button" class="btn btn-default" id="shopping">Shopping</button>
-                    </div>
-                </div> <!-- close .row -->
-            </div> <!-- close .btn-group -->
-        </div> <!-- close #categories .row -->
-    </div>
-    <div class="push"></div>
-</div> <!-- close .wrapper -->
+        <div class="push"></div>
+    </div> <!-- close .wrapper -->
 
-<!-- Sticky Footer -->
+    <!-- Sticky Footer -->
     <footer class="footer"> ©MyCity 2017</footer>
-
+    <!-- Moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- JavaScript File -->
+    <!-- JavaScript Files -->
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/Weather.js"></script>
     <!-- Google Maps JavaScript Files -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap&libraries=places"></script>
-
-<<<<<<< HEAD
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- JavaScript File -->
-<script src="assets/javascript/app.js"></script>
-<script src="assets/javascript/login.js"></script>
-<script src="assets/javascript/event.js"></script>
-<!--Moment.js-->
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-<!-- Google Maps JavaScript Files* -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&libraries=places"></script> -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuhav6ZOClEqz8eq_HH92kcJCVp93TjI&callback=initMap&libraries=places"></script>
-=======
->>>>>>> 7482f92e9e2115f061a58745e1509620692b0b09
 </body>
 </html>
