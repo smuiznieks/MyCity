@@ -231,4 +231,3 @@ function upcomingEvents() {
         console.log('ERROR!');
     });
 };
-
