@@ -10,6 +10,8 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+
+var databaseKeys = [];
 var count = 0;
 
 function logPlaceDetails(placeId) {
@@ -19,26 +21,33 @@ function logPlaceDetails(placeId) {
     }, function (place) {
         console.log('Place details:', place);
         var icon;
-        if (place.types[0] === 'restaurant' || 'meal_takeaway' || 'bakery' || 'food') {
+        var category;
+        if (place.types[0] === 'restaurant' || place.types[0] === 'meal_takeaway' || place.types[0] === 'bakery' || place.types[0] === 'food') {
             icon = ('<span class="glyphicon glyphicon-cutlery" aria-hidden="true">' + '</span>');
+            category = 'Restaurant';
         } else if (place.types[0] === 'bar') {
             icon = ('<span class="glyphicon glyphicon-glass" aria-hidden="true">' + '</span>');
-        } else if (place.types[0] === 'casino' || 'bowling_alley' || 'stadium' || 'amusement_park' || 'aquarium') {
+            category = 'Bar';
+        } else if (place.types[0] === 'casino' || place.types[0] === 'bowling_alley' || place.types[0] === 'stadium' || place.types[0] === 'amusement_park' || place.types[0] === 'aquarium') {
             icon = ('<span class="glyphicon glyphicon-sunglasses" aria-hidden="true">' + '</span>');
+            category = 'Entertainment';
         } else if (place.types[0] === 'museum') {
             icon = ('<span class="glyphicon glyphicon-knight" aria-hidden="true">' + '</span>');
-        } else if (place.types[0] === 'shopping_mall' || 'clothing_store') {
+            category = 'Museum';
+        } else if (place.types[0] === 'shopping_mall' || place.types[0] === 'clothing_store') {
             icon = ('<span class="glyphicon glyphicon-credit-card" aria-hidden="true">' + '</span>');
+            category = 'Shopping';
         } else {
             icon = ('<span class="glyphicon glyphicon-heart" aria-hidden="true">' + '</span>');
+            category = 'Favorite';
         }
         var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
-        div.append('<strong>' + place.name + '</strong>' + ' ' + icon + '<br />');
-        div.append('Address: ' + place.adr_address + '<br />');
+        div.append('<strong>' + place.name + '</strong>' + '<br />');
+        div.append(place.adr_address + '<br />');
         div.append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>' + ': ' + place.formatted_phone_number + '<br />');
-        //div.append('Category: ' + place.types[0] + '<br />');
         div.append('<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>' + ': ' + '<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
+        div.append(icon + ': ' + category + '</br>');
         var buttonGroup = $('<div class="btn-group" role="group" aria-label="...">')
         var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
         buttonGroup.append(button);
@@ -58,28 +67,33 @@ function logRecentDetails(placeId) {
     }, function (place) {
         console.log('Place details:', place);
         var icon;
-        if (place.types[0] === 'restaurant' || 'meal_takeaway' || 'bakery' || 'food') {
+        var category;
+        if (place.types[0] === 'restaurant' || place.types[0] === 'meal_takeaway' || place.types[0] === 'bakery' || place.types[0] === 'food') {
             icon = ('<span class="glyphicon glyphicon-cutlery" aria-hidden="true">' + '</span>');
+            category = 'Restaurant';
         } else if (place.types[0] === 'bar') {
             icon = ('<span class="glyphicon glyphicon-glass" aria-hidden="true">' + '</span>');
-        } else if (place.types[0] === 'casino' || 'bowling_alley' || 'stadium' || 'amusement_park' || 'aquarium') {
+            category = 'Bar';
+        } else if (place.types[0] === 'casino' || place.types[0] === 'bowling_alley' || place.types[0] === 'stadium' || place.types[0] === 'amusement_park' || place.types[0] === 'aquarium') {
             icon = ('<span class="glyphicon glyphicon-sunglasses" aria-hidden="true">' + '</span>');
+            category = 'Entertainment';
         } else if (place.types[0] === 'museum') {
             icon = ('<span class="glyphicon glyphicon-knight" aria-hidden="true">' + '</span>');
-        } else if (place.types[0] === 'shopping_mall' || 'clothing_store') {
+            category = 'Museum';
+        } else if (place.types[0] === 'shopping_mall' || place.types[0] === 'clothing_store') {
             icon = ('<span class="glyphicon glyphicon-credit-card" aria-hidden="true">' + '</span>');
+            category = 'Shopping';
         } else {
             icon = ('<span class="glyphicon glyphicon-heart" aria-hidden="true">' + '</span>');
+            category = 'Favorite';
         }
         var panel = $('<div class="panel panel-default" id="place' + count + '">');
         var div = $('<div class="panel-body">');
-        div.append('<strong>' + place.name + '</strong>' + ' ' + icon + '<br />');
-        div.append('Address: ' + place.adr_address + '<br />');
+        div.append('<strong>' + place.name + '</strong>' + '<br />');
+        div.append(place.adr_address + '<br />');
         div.append('<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>' + ': ' + place.formatted_phone_number + '<br />');
-        //div.append('Category: ' + place.types[0] + '<br />');
         div.append('<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>' + ': ' + '<a href="' + place.website + '" target="_blank">' + 'Website' + '</a>' + '<br />');
-        //var button = $('<button id="place-visited" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-ok" aria-hidden="true">' + '</span>' + ' Complete' + '</button>');
-        //div.append(button);
+        div.append(icon + ': ' + category + '</br>');
         var deleteButton = $('<button id="delete-place" data="' + count + '" type="button" class="btn btn-default btn-sm">' + '<span class="glyphicon glyphicon-remove" aria-hidden="true">' + '</span>' + ' Delete' + '</button>');
         div.append(deleteButton);
         panel.append(div);
@@ -90,17 +104,18 @@ function logRecentDetails(placeId) {
 
 function placeVisited() {
     var placeValue = ($(this).attr('data'));
+    $(this).remove();
     $('#place' + placeValue).detach('#favorites');
     $('#recents').prepend($('#place' + placeValue));
-    //database.ref().set({
-      //  recent: true
-    //});
+    database.ref(databaseKeys[placeValue]).update({
+      recent: true
+    });
 };
 
 function deletePlace() {
     var placeValue = ($(this).attr('data'));
     $('#place' + placeValue).remove();
-    //database.ref().remove();
+    database.ref(databaseKeys[placeValue]).remove();
 };
 
 $(document).on('click', '#place-visited', placeVisited);
@@ -169,12 +184,15 @@ firebase.auth().onIdTokenChanged(function(user) {
             var savedPlace = snapshot.val();
             var favePlace = savedPlace.id;
             var recent = savedPlace.recent;
+            var key = snapshot.key;
+            console.log('Key: ' + key + ' Location: ' + favePlace);
+            databaseKeys.push(key);
+            console.log(databaseKeys);
             if (uid === savedPlace.user) {
                 console.log(savedPlace);
                 if (recent === false) {
                     logPlaceDetails(favePlace);
-                } 
-                if (recent === true) {
+                } else if (recent === true) {
                     logRecentDetails(favePlace);
                 }
             }
